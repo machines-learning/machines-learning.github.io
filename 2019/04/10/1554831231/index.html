@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Machine Learning">
 <meta property="og:description" content="知乎优秀问答推荐 2019年知乎值得关注的机器学习领域大佬 没有导师的指导，研究生如何阅读文献、提出创见、写论文？ 主成分分析（PCA）原理详解 关于做科研的态度和方法的一点感想 第一次写学术论文无从下手怎么办？ 那些酷炫的深度学习网络图怎么画出来的  名校公开课推荐 Stanford CS229 : Machine Learning  官方网站 SCPD Youtube (2008) Bilib">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-09T17:52:03.708Z">
+<meta property="og:updated_time" content="2019-04-10T01:44:43.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019年04月01日—2019年04月07日周报">
 <meta name="twitter:description" content="知乎优秀问答推荐 2019年知乎值得关注的机器学习领域大佬 没有导师的指导，研究生如何阅读文献、提出创见、写论文？ 主成分分析（PCA）原理详解 关于做科研的态度和方法的一点感想 第一次写学术论文无从下手怎么办？ 那些酷炫的深度学习网络图怎么画出来的  名校公开课推荐 Stanford CS229 : Machine Learning  官方网站 SCPD Youtube (2008) Bilib">
@@ -455,7 +455,7 @@
                 
               
 
-              <time title="Created: 2019-04-10 01:33:51 / Modified: 01:52:03" itemprop="dateCreated datePublished" datetime="2019-04-10T01:33:51+08:00">2019-04-10</time>
+              <time title="Created: 2019-04-10 01:33:51 / Modified: 09:44:43" itemprop="dateCreated datePublished" datetime="2019-04-10T01:33:51+08:00">2019-04-10</time>
             
 
             
@@ -1071,9 +1071,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })

@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Machine Learning">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-09T17:51:40.002Z">
+<meta property="og:updated_time" content="2019-04-10T01:44:43.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-10 01:51:40" itemprop="dateModified" datetime="2019-04-10T01:51:40+08:00">2019-04-10</time>
+                <time title="Modified: 2019-04-10 09:44:43" itemprop="dateModified" datetime="2019-04-10T09:44:43+08:00">2019-04-10</time>
               
             
           </span>
@@ -944,9 +944,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })
