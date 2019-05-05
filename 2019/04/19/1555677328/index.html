@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="我们在学习人工智能时，免不了要在各种书籍、公众号、新闻上看到”顶会顶刊“这样的字词。甚至在找工作之前，我们观看大神们的面经时，也会经常看到”顶会顶刊“这样的字词。由于这些字词经常与某些知名大神，某些知名教授，或者某些知名公司联系在一起，不禁在各位初入人工智能领域的小白们心中蒙上了一层神秘的色彩。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能领域的“顶会顶刊”指的是什么">
+<meta property="og:url" content="https://machines-learning.github.io/2019/04/19/1555677328/index.html">
+<meta property="og:site_name" content="Machine Learning">
+<meta property="og:description" content="我们在学习人工智能时，免不了要在各种书籍、公众号、新闻上看到”顶会顶刊“这样的字词。甚至在找工作之前，我们观看大神们的面经时，也会经常看到”顶会顶刊“这样的字词。由于这些字词经常与某些知名大神，某些知名教授，或者某些知名公司联系在一起，不禁在各位初入人工智能领域的小白们心中蒙上了一层神秘的色彩。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-05T18:55:29.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工智能领域的“顶会顶刊”指的是什么">
+<meta name="twitter:description" content="我们在学习人工智能时，免不了要在各种书籍、公众号、新闻上看到”顶会顶刊“这样的字词。甚至在找工作之前，我们观看大神们的面经时，也会经常看到”顶会顶刊“这样的字词。由于这些字词经常与某些知名大神，某些知名教授，或者某些知名公司联系在一起，不禁在各位初入人工智能领域的小白们心中蒙上了一层神秘的色彩。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Machine Learning" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://machines-learning.github.io/2019/04/19/1555677328/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>人工智能领域的“顶会顶刊”指的是什么 | Machine Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Machine Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">machine-learning's blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+<script type="text/javascript">
+  var headband=document.getElementsByClassName("headband")[0];
+  var githubContainer=document.createElement("div");
+  githubContainer.innerHTML="" +
+    "<a href='https://github.com/machines-learning' " +
+    "   class=\"github-corner\" " +
+    "   aria-label=\"View source on Github\">" +
+    "   <svg width=\"80\" " +
+    "        height=\"80\" " +
+    "        viewBox=\"0 0 250 250\" " +
+    "        style=\"fill:#151513; " +
+    "        color:#fff; " +
+    "        position: absolute; " +
+    "        top: 0; " +
+    "        border: 0; " +
+    "        left: 0; " +
+    "        transform: " +
+    "        scale(-1, 1);\" " +
+    "        aria-hidden=\"true\">" +
+    "        <path d=\"M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z\"></path>" +
+    "        <path d=\"M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 " +
+    "120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 " +
+    "125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2\" " +
+    "              fill=\"currentColor\" " +
+    "              style=\"transform-origin: 130px 106px;\" " +
+    "              class=\"octo-arm\">" +
+    "        </path>" +
+    "        <path d=\"M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 " +
+    "C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 " +
+    "154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 " +
+    "178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 " +
+    "C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 " +
+    "203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 " +
+    "152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z\" " +
+    "             fill=\"currentColor\" " +
+    "             class=\"octo-body\">" +
+    "         </path>" +
+    "   </svg>" +
+    "   <style>" +
+    "         .github-corner:hover " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}" +
+    "         @keyframes " +
+    "         octocat-wave{0%,100%{transform:rotate(0)}20%," +
+    "60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}" +
+    "         @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>" +
+    "</a>";
+  headband.appendChild(githubContainer);
+</script>
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://machines-learning.github.io/2019/04/19/1555677328/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="machine-learning">
+      <meta itemprop="description" content="Computers are able to see, hear and learn. Welcome to the future">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Machine Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人工智能领域的“顶会顶刊”指的是什么
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 20:35:28" itemprop="dateCreated datePublished" datetime="2019-04-19T20:35:28+08:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-06 02:55:29" itemprop="dateModified" datetime="2019-05-06T02:55:29+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/19/1555677328/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/1555677328/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/19/1555677328/" class="leancloud_visitors" data-flag-title="人工智能领域的“顶会顶刊”指的是什么">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们在学习人工智能时，免不了要在各种书籍、公众号、新闻上看到”顶会顶刊“这样的字词。甚至在找工作之前，我们观看大神们的面经时，也会经常看到”顶会顶刊“这样的字词。由于这些字词经常与某些知名大神，某些知名教授，或者某些知名公司联系在一起，不禁在各位初入人工智能领域的小白们心中蒙上了一层神秘的色彩。</p>
+<a id="more"></a>
+<p>什么是人工智能领域的“顶会顶刊”？我们为什么要在“顶会顶刊”上发表论文？怎样在“顶会顶刊”上发表论文？</p>
+<p>带着这样的疑问，笔者查阅了大量的资料，并将资料中的内容提炼、总结，写下了本文。</p>
+<h4 id="1-什么是论文？什么是学术论文？"><a href="#1-什么是论文？什么是学术论文？" class="headerlink" title="1. 什么是论文？什么是学术论文？"></a>1. 什么是论文？什么是学术论文？</h4><p><strong>论文</strong>是探讨问题进行学术研究的一种手段，又是描述学术研究成果进行学术交流的一种工具。</p>
+<p>参加过本科、硕士、博士、及部分大专学习的同学，在毕业时都需要进行论文答辩，所以绝大部分学习人工智能或将要从事人工智能领域工作的的同学，都有过写论文的经历，这一类论文称为<strong>毕业论文</strong>。那么学术论文又有什么不同呢？</p>
+<p><strong>学术论文</strong>是某一学术课题在实验性、理论性或预测性上具有的新的科学研究成果或创新见解和知识的科学记录，或是某种已知原理应用于实际上取得新进展的科学总结，用以提供<strong>学术会议</strong>上宣读、交流、讨论或<strong>学术刊物</strong>上发表，或用作其他用途的书面文件。</p>
+<h4 id="2-什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？"><a href="#2-什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？" class="headerlink" title="2. 什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？"></a>2. 什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？</h4><p><strong>学术会议</strong>是一种以促进科学发展、学术交流、课题研究等学术性话题为主题的会议。学术会议一般都具有国际性、权威性、高知识性、高互动性等特点，其参会者一般为科学家、学者、教师等具有高学历的研究人员。由于学术会议是一种交流的，互动的会议，因此参会者往往都会将自己的研究成果以学术展板的形式展示出来，使得互动交流更加直观、效果更好。</p>
+<p><strong>会议论文</strong>就是在<strong>学术会</strong>这样的正式场合宣读并且是首次发表的论文。会议论文是属于公开发表的论文，一般正式的学术交流会议都会出版会议论文集，这样发表的论文一般也会作为职称评定等考核内容。</p>
+<p><strong>学术期刊</strong>是一种经过同行评审的期刊，发表在学术期刊上的文章，通常涉及特定的学科。学术期刊展示了研究领域的成果，并起到了公示的作用，其内容主要以原创研究、综述文章。</p>
+<p><strong>期刊论文</strong>是指各学科领域中的专业人员为介绍自己的科研成果，发表在<strong>学术期刊</strong>上的学术论文。这类论文具有专门化的特点，针对性强，发表量大，反映各学科领域的新进展、新技术和新成果。</p>
+<h4 id="3-会议论文与期刊论文有什么区别？为什么在CS（Computer-Science）领域，会议论文比期刊论文更重要呢？"><a href="#3-会议论文与期刊论文有什么区别？为什么在CS（Computer-Science）领域，会议论文比期刊论文更重要呢？" class="headerlink" title="3. 会议论文与期刊论文有什么区别？为什么在CS（Computer Science）领域，会议论文比期刊论文更重要呢？"></a>3. 会议论文与期刊论文有什么区别？为什么在CS（Computer Science）领域，会议论文比期刊论文更重要呢？</h4><p>CS领域有一个非常有趣的现象，极度重视学术会议，而期刊通常大部分期刊论文都是会议论文的扩展版，首发就在期刊上的相对较少。也正因为如此，CS期刊的影响因子都低到惊人的程度，顶级刊物往往也只有1到2左右，被引用的通常都是会议论文，而不是很久以后才出版的期刊版。</p>
+<p>CS领域之所以更重视学术会议，就是因为CS技术更新速度快，而期刊需要等待漫长的时间，等待期刊发表时，当时最新的技术早已不是最新，</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
+<li><a href="https://baike.baidu.com/item/论文" target="_blank" rel="noopener">百度百科“论文”词条</a></li>
+<li><a href="https://baike.baidu.com/item/毕业论文" target="_blank" rel="noopener">百度百科“毕业论文”词条</a></li>
+<li><a href="https://baike.baidu.com/item/学术论文" target="_blank" rel="noopener">百度百科“学术论文”词条</a></li>
+<li><a href="https://baike.baidu.com/item/学术会议" target="_blank" rel="noopener">百度百科“学术会议”词条</a></li>
+<li><a href="https://baike.baidu.com/item/会议论文" target="_blank" rel="noopener">百度百科“会议论文”词条</a></li>
+<li><a href="https://baike.baidu.com/item/学术期刊" target="_blank" rel="noopener">百度百科“学术期刊”词条</a></li>
+<li><a href="https://baike.baidu.com/item/杂志论文" target="_blank" rel="noopener">百度百科“杂志论文”词条</a></li>
+<li><a href="http://dy.163.com/v2/article/detail/DIMMT3P40516C52N.html" target="_blank" rel="noopener">网易号“学术圈的你，是时候了解一些期刊基本常识了！” by 百纳知识</a></li>
+<li><a href="https://www.zhihu.com/question/54142181" target="_blank" rel="noopener">知乎问答“为什么计算机学术界认可顶级会议论文，而其他领域几乎都是只认可顶级期刊？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/49521821" target="_blank" rel="noopener">知乎专栏“会议论文和期刊论文的区别” by 志鹏学术华</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/40551730" target="_blank" rel="noopener">知乎专栏“发表过的会议论文还能发期刊论文吗？” by Dr.Wu</a></li>
+<li><a href="https://academia.stackexchange.com/questions/38086/why-are-conference-papers-so-important-in-computer-science-cs" target="_blank" rel="noopener">StackExchange Academia Question: “Why are conference papers so important in computer  science (CS) ?”</a></li>
+<li><a href="https://homes.cs.washington.edu/~mernst/advice/conferences-vs-journals.html" target="_blank" rel="noopener">“Choosing a venue: conference or journal?” by Michael Ernst (mernst@cs.washington.edu)</a></li>
+<li><a href="https://cacm.acm.org/magazines/2009/5/24632-conferences-vs-journals-in-computing-research/fulltext" target="_blank" rel="noopener">“Conferences vs. Journals in Computing Research” by Moshe Y.Vardi</a></li>
+<li><a href="https://www.zhihu.com/question/68486939" target="_blank" rel="noopener">知乎问答“如何评价新Nature子刊Nature Machine Interlligence的出现？”</a></li>
+<li><a href="https://www.zhihu.com/question/275233006" target="_blank" rel="noopener">知乎问答“如何评价机器学习社区对Nature Machine Intelligence的抵制行动？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37115978" target="_blank" rel="noopener">知乎专栏“为什么AI学者们都不约而同地抵制这个《Nature》子刊？”</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/2019-01-08-19?from=synced&amp;keyword=然历遭抵制，Nature机器智能子刊最终上线" target="_blank" rel="noopener">“虽然历遭抵制，Nature机器智能子刊最终上线” by 机器之心</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/41261967" target="_blank" rel="noopener">“2018谷歌学术影响因子发布：CVPR排名泛领域第一” by 量子位</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/41268000" target="_blank" rel="noopener">“2018谷歌学术期刊&amp;出版物排名公布：CVPR挤进前20”</a></li>
+<li><a href="https://scholar.google.com/citations?view_op=top_venues&amp;hl=en&amp;vq=eng_artificialintelligence" target="_blank" rel="noopener">“Top pulications in Artificial intelligence” by Google Scholar</a></li>
+<li><a href="https://www.ccf.org.cn/xspj/rgzn/" target="_blank" rel="noopener">“中国计算机学会推荐国际学术刊物、学术会议（人工智能方向）” by 中国计算机学会</a></li>
+<li><a href="https://tryolabs.com/blog/machine-learning-deep-learning-conferences/" target="_blank" rel="noopener">tryolabs: “List of Machine Learning and Deep Learning conferences in 2019 / 2020” by Esther</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/55565999" target="_blank" rel="noopener">知乎专栏“机器学习各领域顶会和实验室”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28037164" target="_blank" rel="noopener">知乎专栏“国际顶尖计算机视觉、机器学习会议大搜罗——附排名&amp;接受率</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/38595692" target="_blank" rel="noopener">知乎专栏“计算机视觉世界三大顶级会议介绍” by 裴若希</a></li>
+<li><a href="https://www.zhihu.com/question/38424588" target="_blank" rel="noopener">知乎问答“数据挖掘、机器学习领域有哪些知名的期刊或会议？”</a></li>
+<li><a href="https://www.zhihu.com/question/54878177" target="_blank" rel="noopener">知乎问答“什么才算计算机的顶级会议？”</a></li>
+<li><a href="https://www.zhihu.com/question/33977252" target="_blank" rel="noopener">知乎问答“计算机科学各个方向有哪些顶刊和顶会？”</a></li>
+<li><a href="https://www.zhihu.com/question/37687006" target="_blank" rel="noopener">知乎问答“计算机视觉顶尖期刊和会议有哪些？”</a></li>
+<li><a href="http://muchong.com/html/201902/13173436.html" target="_blank" rel="noopener">小木虫帖子“计算机顶会和顶刊哪个难发，比如AI方向”</a></li>
+<li><a href="http://muchong.com/html/201012/2659795.html" target="_blank" rel="noopener">小木虫帖子“为什么不去读顶级会议上的论文？适应于机器学习、计算机视觉和人工智能”</a></li>
+<li><a href="https://www.jianshu.com/p/e5d352910e8e" target="_blank" rel="noopener">简书“人工智能顶级会议” by yansicing</a></li>
+<li><a href="https://blog.csdn.net/xiaoshengforever/article/details/22193389" target="_blank" rel="noopener">CSDN“几个人工智能会议” by xiaoshengforever</a></li>
+<li><a href="https://blog.csdn.net/u011447369/article/details/70172048" target="_blank" rel="noopener">CSDN转载“世界顶级人工智能会议的总结” by 周志华</a></li>
+<li><a href="http://edwinren.blogspot.com/2008/07/blog-post_30.html" target="_blank" rel="noopener">“计算机学科发表论文介绍” by Edwin</a></li>
+<li><a href="https://www.cnblogs.com/X-knight/p/9281538.html" target="_blank" rel="noopener">“发表一篇顶会论文的经验分享” by 勋爵</a></li>
+<li><a href="https://www.quora.com/What-are-the-top-AI-conferences" target="_blank" rel="noopener">Quora Question: “What are the top AI conferences?”</a></li>
+<li><a href="https://www.zhihu.com/question/308457941" target="_blank" rel="noopener">知乎问答“为什么没有中文的顶级学术期刊？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/35866253" target="_blank" rel="noopener">“机器学习顶会NIPS要改名了” by 量子位</a></li>
+<li><a href="https://www.zhihu.com/question/265066766" target="_blank" rel="noopener">知乎问答”对于应聘人工智能相关算法岗来说，顶会论文和算法比赛哪个更重要？”</a></li>
+<li><a href="https://www.zhihu.com/question/277910619" target="_blank" rel="noopener">知乎问答“计算机视觉研究生怎样发表一篇顶会论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/277497549" target="_blank" rel="noopener">知乎问答“暑期科研，如何发CVPR？要做到什么程度？”</a></li>
+<li><a href="https://www.zhihu.com/question/49781124" target="_blank" rel="noopener">知乎问答“怎样才能在NIPS上面发论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/295084174" target="_blank" rel="noopener">知乎问答”发Conference on Learning Theory (COLT)有多难？”</a></li>
+<li><a href="https://www.zhihu.com/question/33630593" target="_blank" rel="noopener">知乎问答“从零基础开始想发一篇深度学习的论文要提前准备什么？写论文的周期大概多久？”</a></li>
+<li><a href="https://www.zhihu.com/question/41537788" target="_blank" rel="noopener">知乎问答“本科生想发出彩的机器学习a类论文，如何准备？”</a></li>
+<li><a href="https://www.zhihu.com/question/278569254" target="_blank" rel="noopener">知乎问答“机器学习的会议如何灌水？”</a></li>
+<li><a href="https://www.zhihu.com/question/30912132" target="_blank" rel="noopener">知乎问答“本人现在研一，想水篇论文毕业，请问怎么在机器学习方面水paper？”</a></li>
+<li><a href="https://www.zhihu.com/question/21427261" target="_blank" rel="noopener">知乎问答“如何能在本科三年级就发表论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/39625348" target="_blank" rel="noopener">知乎问答“机器学习方面如何发表论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/313590513" target="_blank" rel="noopener">知乎问答”博士生在没有导师指导的情况下，该如何自己选题发 CVPR ？”</a></li>
+<li><a href="https://www.zhihu.com/question/277126432" target="_blank" rel="noopener">知乎问答“发论文需要导师吗？”</a></li>
+<li><a href="https://www.zhihu.com/question/31555786" target="_blank" rel="noopener">知乎问答“机器学习方面高质量的论文怎么找？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29828510" target="_blank" rel="noopener">知乎专栏“如何看待「不靠谱」的机器学习论文？”</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/070102" target="_blank" rel="noopener">“学完了在线课程？如何开启深度学习论文的阅读模式” by 机器之心</a></li>
+<li><a href="https://towardsdatascience.com/getting-started-with-reading-deep-learning-research-papers-the-why-and-the-how-dfd1ac15dbc0" target="_blank" rel="noopener">Towards Data Science: “Getting started with reading Deep Learning Research papers: The Why and the How” by Nityesh Agarwal</a></li>
+<li><a href="https://www.zhihu.com/question/50967184" target="_blank" rel="noopener">知乎问答“看机器学习论文时，看不懂数学公式怎么办？”</a></li>
+<li><a href="https://www.zhihu.com/question/304334959" target="_blank" rel="noopener">知乎问答“研究新生要怎么看论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/299141026" target="_blank" rel="noopener">知乎问答“人工智能机器学习方面，有什么好的论文推荐？”</a></li>
+<li><a href="https://www.zhihu.com/question/313632967" target="_blank" rel="noopener">知乎问答“机器学习方面的论文应该在哪找？”</a></li>
+<li><a href="https://www.zhihu.com/question/27393375" target="_blank" rel="noopener">知乎问答“把深度学习作为自己的硕士课题，有什么可以做的？”</a></li>
+<li><a href="https://www.zhihu.com/question/294551853" target="_blank" rel="noopener">知乎问答”关于深度学习方向选择问题？”</a></li>
+<li><a href="https://www.zhihu.com/question/27458331" target="_blank" rel="noopener">知乎问答”计算机硕士论文方向求助，图片方向和深度学习方向的？”</a></li>
+<li><a href="https://www.zhihu.com/question/52500200" target="_blank" rel="noopener">知乎问答”深度学习领域没人带没导师，全靠自己，想有idea最后发paper到底有多难？”</a></li>
+<li><a href="https://www.zhihu.com/question/58343851" target="_blank" rel="noopener">知乎问答”新入学的计算机研究生怎么安排三年学习深度学习？”</a></li>
+<li><a href="https://www.zhihu.com/question/308928022" target="_blank" rel="noopener">知乎问答”想问一下作为研究深度学习的研究生，毕业的时候掌握到什么程度才能算合格？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/47036594" target="_blank" rel="noopener">知乎专栏“文科生用机器学习做论文，该写什么？” by 王树义</a></li>
+<li><a href="https://www.jiqizhixin.com/articles/2019-04-19-6" target="_blank" rel="noopener">“投稿量激增56%，CVPR 2019接收论文的关键词是什么？” by 机器之心</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/62540817" target="_blank" rel="noopener">知乎专栏”顶会论文接收量再破纪录，计算机视觉创新正在发生什么变化？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/44304016" target="_blank" rel="noopener">知乎专栏“顶级会议的疯狂投稿下的AI现状” by Zahnxing Zhu</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/50263270" target="_blank" rel="noopener">知乎专栏“关于本次 CVPR 2019 投稿的一些感想“  by Guosheng Hu</a></li>
+<li><a href="https://www.zhihu.com/question/271293179" target="_blank" rel="noopener">知乎问答”大二就中 CVPR/ICCV/ECCV/NIPS 是一种怎样的体验？”</a></li>
+<li><a href="https://www.zhihu.com/question/313590513" target="_blank" rel="noopener">知乎问答”如何看待CVPR 2019录用结果？”</a></li>
+<li><a href="https://www.zhihu.com/question/54025865" target="_blank" rel="noopener">知乎问答“CV/ML顶级会议上的灌水文都有哪些特征？如何快速判断顶会论文是在灌水？”</a></li>
+<li><a href="https://www.zhihu.com/question/39367974" target="_blank" rel="noopener">知乎问答“你读过的 机器学习/数据挖掘 顶级会议论文中最水的是哪一篇？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/39971180" target="_blank" rel="noopener">知乎专栏“参加国际机器学习顶级会议ICML 2018有感” by 王晋东不在家</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/26641697" target="_blank" rel="noopener">知乎专栏”ICLR小总结” by 罗若天</a></li>
+<li><a href="https://bookdown.org/wshuyi/intro-to-scientific-writings4/#" target="_blank" rel="noopener">“毕业论文新手入坑手册” by 王树义</a></li>
+<li><a href="https://www.zhihu.com/question/21083751" target="_blank" rel="noopener">知乎问答”如何研读一篇论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/23684933" target="_blank" rel="noopener">知乎问答”如何开始写英文论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/20829666" target="_blank" rel="noopener">知乎问答”第一次写学术论文无从下手怎么办？”</a></li>
+<li><a href="https://www.zhihu.com/question/29784060" target="_blank" rel="noopener">知乎问答”国外有些学者在学生时期发论文横扫science nature，但独立后却只能在一般刊物上发论文。怎么看这个现象？”</a></li>
+<li><a href="https://www.zhihu.com/question/304334959" target="_blank" rel="noopener">知乎问答”研究生新生要怎么看论文？”</a></li>
+<li><a href="https://www.zhihu.com/question/20188973" target="_blank" rel="noopener">知乎问答”在家里如何免费使用中国知网？”</a></li>
+<li><a href="https://www.zhihu.com/question/265953178" target="_blank" rel="noopener">知乎问答”如何评价深度学习相关顶级期刊论文难复现的问题？”</a></li>
+<li><a href="https://www.zhihu.com/question/298891488" target="_blank" rel="noopener">知乎问答”想要复现一篇深度学习的论文需要做到哪些？”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32084636" target="_blank" rel="noopener">知乎专栏”想在「国际期刊」发论文吗”</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/44348312" target="_blank" rel="noopener">知乎专栏”硕士研究生论文投稿技巧”</a></li>
+<li><a href="https://www.quora.com/Why-do-we-write-research-papers" target="_blank" rel="noopener">Quora “Why do we write research papers?”</a></li>
+<li><a href="https://wenku.baidu.com/view/0ca4d0a44b35eefdc8d333f3.html" target="_blank" rel="noopener">“为什么要发表论文呢？” by 中华星火教育</a></li>
+<li><a href="https://mp.weixin.qq.com/s/P_QEBNm70a8M0u79C-JT2w" target="_blank" rel="noopener">“126篇殿堂级深度学习论文分类整理 从入门到应用（上）” by songrotek</a></li>
+<li><a href="https://mp.weixin.qq.com/s/SnOeb-qdWH0MCN4vH99j-A" target="_blank" rel="noopener">“126篇殿堂级深度学习论文分类整理 从入门到应用（下）” by songrotek</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/42509495" target="_blank" rel="noopener">“十大深度学习热门论文（2018年版）” by 论智</a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/14/1555208643/" rel="next" title="2019年04月08日—2019年04月14日周报">
+                <i class="fa fa-chevron-left"></i> 2019年04月08日—2019年04月14日周报
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/20/1555741208/" rel="prev" title="2019年04月15日—2019年04月21日周报">
+                2019年04月15日—2019年04月21日周报 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="machine-learning">
+            
+              <p class="site-author-name" itemprop="name">machine-learning</p>
+              <div class="site-description motion-element" itemprop="description">Computers are able to see, hear and learn. Welcome to the future</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/machines-learning" title="GitHub &rarr; https://github.com/machines-learning" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:machine-learning@qq.com" title="E-Mail &rarr; mailto:machine-learning@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是论文？什么是学术论文？"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是论文？什么是学术论文？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？"><span class="nav-number">2.</span> <span class="nav-text">2. 什么是学术会议？什么是会议论文？什么是学术期刊？什么是期刊论文？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-会议论文与期刊论文有什么区别？为什么在CS（Computer-Science）领域，会议论文比期刊论文更重要呢？"><span class="nav-number">3.</span> <span class="nav-text">3. 会议论文与期刊论文有什么区别？为什么在CS（Computer Science）领域，会议论文比期刊论文更重要呢？</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">machine-learning</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://machine-learning.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://machines-learning.github.io/2019/04/19/1555677328/";
+    this.page.identifier = "2019/04/19/1555677328/";
+    this.page.title = '人工智能领域的“顶会顶刊”指的是什么';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://machine-learning.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz',
+                'X-LC-Key': 'GDo2dy3UKTJkiL6Oqq6c009Y',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
