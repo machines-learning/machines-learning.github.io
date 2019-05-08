@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="NLP学习之路系列是笔者学习自然语言处理时自己摸索总结的一条学习路线，完全按照笔者个人的性格特点及学习习惯定制，并不适合每一位读者，对于读者仅仅作为参考即可。本系列文章同时也会作为笔者记录NLP相关资料的笔记，将不断保持更新。  ​    本篇文章是NLP学习之路系列文章的首篇。本篇首先会搜集一些NLP领域大牛的入门心得，通过学习揣摩大牛的入门心得对NLP的学习有一个大致的认识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP学习之路——资料搜集篇">
+<meta property="og:url" content="https://artificial-intelligence.net.cn/2019/05/08/1557328260/index.html">
+<meta property="og:site_name" content="Machine Learning">
+<meta property="og:description" content="NLP学习之路系列是笔者学习自然语言处理时自己摸索总结的一条学习路线，完全按照笔者个人的性格特点及学习习惯定制，并不适合每一位读者，对于读者仅仅作为参考即可。本系列文章同时也会作为笔者记录NLP相关资料的笔记，将不断保持更新。  ​    本篇文章是NLP学习之路系列文章的首篇。本篇首先会搜集一些NLP领域大牛的入门心得，通过学习揣摩大牛的入门心得对NLP的学习有一个大致的认识。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/71OYPqZJmPL._AC_UL320_.jpg">
+<meta property="og:image" content="http://file.ituring.com.cn/ScreenShow/0100a7322d50dc7e4983">
+<meta property="og:image" content="https://img11.360buyimg.com/n1/s200x200_18057/9bda917f-ebee-4a2e-8e50-58891cf7058d.jpg">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/814GS-Gm7cL._AC_UL320_.jpg">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/61Z5hGL8DjL._AC_UL320_.jpg">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/61lZTjl+LDL._AC_UL320_.jpg">
+<meta property="og:updated_time" content="2019-05-08T15:49:40.643Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NLP学习之路——资料搜集篇">
+<meta name="twitter:description" content="NLP学习之路系列是笔者学习自然语言处理时自己摸索总结的一条学习路线，完全按照笔者个人的性格特点及学习习惯定制，并不适合每一位读者，对于读者仅仅作为参考即可。本系列文章同时也会作为笔者记录NLP相关资料的笔记，将不断保持更新。  ​    本篇文章是NLP学习之路系列文章的首篇。本篇首先会搜集一些NLP领域大牛的入门心得，通过学习揣摩大牛的入门心得对NLP的学习有一个大致的认识。">
+<meta name="twitter:image" content="https://m.media-amazon.com/images/I/71OYPqZJmPL._AC_UL320_.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Machine Learning" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://artificial-intelligence.net.cn/2019/05/08/1557328260/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>NLP学习之路——资料搜集篇 | Machine Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Machine Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">machine-learning's blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+<script type="text/javascript">
+  var headband=document.getElementsByClassName("headband")[0];
+  var githubContainer=document.createElement("div");
+  githubContainer.innerHTML="" +
+    "<a href='https://github.com/machines-learning' " +
+    "   class=\"github-corner\" " +
+    "   aria-label=\"View source on Github\">" +
+    "   <svg width=\"80\" " +
+    "        height=\"80\" " +
+    "        viewBox=\"0 0 250 250\" " +
+    "        style=\"fill:#151513; " +
+    "        color:#fff; " +
+    "        position: absolute; " +
+    "        top: 0; " +
+    "        border: 0; " +
+    "        left: 0; " +
+    "        transform: " +
+    "        scale(-1, 1);\" " +
+    "        aria-hidden=\"true\">" +
+    "        <path d=\"M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z\"></path>" +
+    "        <path d=\"M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 " +
+    "120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 " +
+    "125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2\" " +
+    "              fill=\"currentColor\" " +
+    "              style=\"transform-origin: 130px 106px;\" " +
+    "              class=\"octo-arm\">" +
+    "        </path>" +
+    "        <path d=\"M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 " +
+    "C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 " +
+    "154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 " +
+    "178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 " +
+    "C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 " +
+    "203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 " +
+    "152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z\" " +
+    "             fill=\"currentColor\" " +
+    "             class=\"octo-body\">" +
+    "         </path>" +
+    "   </svg>" +
+    "   <style>" +
+    "         .github-corner:hover " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}" +
+    "         @keyframes " +
+    "         octocat-wave{0%,100%{transform:rotate(0)}20%," +
+    "60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}" +
+    "         @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>" +
+    "</a>";
+  headband.appendChild(githubContainer);
+</script>
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://artificial-intelligence.net.cn/2019/05/08/1557328260/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="machine-learning">
+      <meta itemprop="description" content="Computers are able to see, hear and learn. Welcome to the future">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Machine Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NLP学习之路——资料搜集篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-08 23:11:00 / Modified: 23:49:40" itemprop="dateCreated datePublished" datetime="2019-05-08T23:11:00+08:00">2019-05-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/08/1557328260/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/08/1557328260/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/08/1557328260/" class="leancloud_visitors" data-flag-title="NLP学习之路——资料搜集篇">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>NLP学习之路系列是笔者学习自然语言处理时自己摸索总结的一条学习路线，完全按照笔者个人的性格特点及学习习惯定制，并不适合每一位读者，对于读者仅仅作为参考即可。本系列文章同时也会作为笔者记录NLP相关资料的笔记，将不断保持更新。</p>
+</blockquote>
+<p>​    本篇文章是NLP学习之路系列文章的首篇。本篇首先会搜集一些NLP领域大牛的入门心得，通过学习揣摩大牛的入门心得对NLP的学习有一个大致的认识。<a id="more"></a>接着会列出一批NLP领域的经典书籍，读者可通过亚马逊、京东、当当等渠道购买阅读。然后会推荐一些国内外名校的公开课，<strong>强烈推荐以名校公开课为主进行学习</strong>。同时也会推荐一些付费课程作为补充资料，郑重声明笔者并没有收取广告费（如果有人愿意补上广告费也是可以的），也没有看过全部的课程，推荐的理由一般是老师讲课水平不错/听说这门课讲得不错，读者完全可以忽略这些内容。由于笔者有在学习的过程中看大量同类优秀资料的习惯，所以把这些课程列入到学习之路的文章里。最后会筛选一些Github上的优秀开源项目，这些优秀开源项目会成为我们学习NLP道路上的强大的工具。</p>
+<p>​    本篇推荐的所有资料都具有时效性，随着时间的流逝过于老旧并没有参考价值的资料将会被剔除。</p>
+<h2 id="如何入门"><a href="#如何入门" class="headerlink" title="如何入门"></a>如何入门</h2><ul>
+<li><a href="https://www.zhihu.com/question/19895141" target="_blank" rel="noopener">知乎问答 “自然语言处理怎么最快入门？”</a></li>
+<li><a href="https://www.zhihu.com/question/264352009" target="_blank" rel="noopener">知乎问答 “适合初学者学习的NLP开源项目有哪些？”</a></li>
+<li><a href="https://www.zhihu.com/question/26391679" target="_blank" rel="noopener">知乎问答 “数据挖掘、机器学习、自然语言处理这三者是什么关系？这几个怎么入门啊？”</a></li>
+<li><a href="https://www.zhihu.com/question/35381685" target="_blank" rel="noopener">知乎问答 “研究 NLP（自然语言处理）的大神有哪些值得推荐的语言学方面的书籍？”</a></li>
+<li><a href="https://www.zhihu.com/question/19895141" target="_blank" rel="noopener">“NLP入门推荐书目（2019版）” by 清华大学老师 刘知远</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/59184256" target="_blank" rel="noopener">“初入NLP领域的一些小建议” by 香侬科技CEO 李纪为</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/64026730" target="_blank" rel="noopener">“我的NLP学习之路” by 北京科技大学研究生 机智的叉烧</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32951278" target="_blank" rel="noopener">“NLP自然语言处理从入门到迷茫” by 面包君</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/56276227" target="_blank" rel="noopener">“自然语言处理初学者建议及干货推荐” by AI小白入门</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29791380" target="_blank" rel="noopener">“自然语言处理(NLP)入门学习资源清单” by 清华大学数据科学研究院</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/54731715" target="_blank" rel="noopener">“《从零开始学习自然语言处理(NLP)》-基础准备(0)” by AI算法工程师(NLP) EddyLiu</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/34688488" target="_blank" rel="noopener">“自然语言处理入门：手把手教你解决90%的NLP问题” by 阿里巴巴资深算法工程师 章华燕</a></li>
+</ul>
+<h2 id="书籍推荐"><a href="#书籍推荐" class="headerlink" title="书籍推荐"></a>书籍推荐</h2><table>
+<thead>
+<tr>
+<th><b>自然语言处理综论(第二版)</b><br>译者：冯志伟<br>作者：Daniel Jurafsky , James H. Martin<br>出版社: 电子工业出版社; 第2版 (2018年3月1日)；784页<br>外文书名: Speech and Language Processing</th>
+<th><a href="https://www.amazon.cn/dp/B07BLHMY2V?qid=1557288088" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/71OYPqZJmPL._AC_UL320_.jpg" width="30%"></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>信息检索导论</b><br>译者：王斌<br>作者：Christopher D.Manning , Prabhakar Raghavan , Hinrich Schütze <br>出版社: 人民邮电出版社; 第1版 (2010年8月26日)；388页<br>外文书名: Introduction to Information Retrieval</td>
+<td><a href="http://www.ituring.com.cn/book/127" target="_blank" rel="noopener"><img src="http://file.ituring.com.cn/ScreenShow/0100a7322d50dc7e4983" width="30%"></a></td>
+</tr>
+<tr>
+<td><b>统计自然语言处理基础</b><br>译者：苑春法 , 李庆中 , 王昀 , 李伟 , 曹德芳<br>作者：Christopher D.Manning , Hinrich Schütze <br>出版社: 电子工业出版社; 第1版 (2005年1月)；418页<br>外文书名: Foundations of Statistical Natural Language Processing</td>
+<td><a href="https://item.jd.com/10094301.html?dist=jd" target="_blank" rel="noopener"><img src="https://img11.360buyimg.com/n1/s200x200_18057/9bda917f-ebee-4a2e-8e50-58891cf7058d.jpg" width="45%"></a></td>
+</tr>
+<tr>
+<td><b>统计自然语言处理(第2版)</b><br>作者：宗成庆 <br>出版社: 清华大学出版社; 第2版 (2013年8月1日)；569页</td>
+<td><a href="https://www.amazon.cn/dp/B00EYSQLFM?qid=1557288088" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/814GS-Gm7cL._AC_UL320_.jpg" width="30%"></a></td>
+</tr>
+<tr>
+<td><b>基于深度学习的自然语言处理</b><br>译者：车万翔 , 郭江 , 张伟男 , 刘铭<br>作者：Yoav Goldberg <br>出版社: 机械工业出版社; 第1版 (2018年5月1日)；251页<br>外文书名: Neural Network Methods for Natural Language Processing</td>
+<td><a href="https://www.amazon.cn/dp/B07D51TYG1?qid=1557288088" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/61Z5hGL8DjL._AC_UL320_.jpg" width="30%"></a></td>
+</tr>
+<tr>
+<td><b>Python自然语言处理</b><br>译者：张金超 , 刘舒曼<br>作者：Jalaj Thanaki <br>出版社: 机械工业出版社; 第1版 (2018年9月4日)；281页<br>外文书名: Python Natural Language Processing</td>
+<td><a href="https://www.amazon.cn/dp/B07H5VXG6J?qid=1557288088" target="_blank" rel="noopener"><img src="https://m.media-amazon.com/images/I/61lZTjl+LDL._AC_UL320_.jpg" width="30%"></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h2><ul>
+<li><strong><a href="https://ssvideo.superlib.com/cxvideo/play/page?sid=1586&amp;d=77edee6d216507e5ece667cef95799ea&amp;cid=236" target="_blank" rel="noopener">宗成庆：自然语言理解（ 2010 ）</a></strong> <em><a href="https://www.bilibili.com/video/av51794616/" target="_blank" rel="noopener">bilibili</a></em></li>
+<li><strong><a href="http://www.chinahadoop.cn/course/1344" target="_blank" rel="noopener">秦曾昌：自然语言处理（ 2018 ）</a></strong> <em><a href="https://www.bilibili.com/video/av44918854" target="_blank" rel="noopener">bilibili</a></em></li>
+<li><strong><a href="https://edu.hellobi.com/course/275" target="_blank" rel="noopener">aopu：自然语言处理之AI深度学习顶级实战课程（2018）</a></strong> <em><a href="https://www.bilibili.com/video/av42021445" target="_blank" rel="noopener">bilibili</a></em></li>
+<li><strong><a href="https://www.greedyai.com/course/68/summary/introNlp" target="_blank" rel="noopener">李文哲：NLP自然语言处理集训营（2019）</a></strong></li>
+<li><strong><a href="https://mooc.study.163.com/smartSpec/detail/1001477005.htm" target="_blank" rel="noopener">网易微专业：AI工程师（自然语言处理）（ 2019 ）</a></strong> </li>
+<li><strong><a href="http://www.nlpr.ia.ac.cn/cip/introduction.htm" target="_blank" rel="noopener">中科院：自然语言处理（2018）</a></strong> <em><a href="https://www.bilibili.com/video/av46707588" target="_blank" rel="noopener">bilibili</a></em></li>
+<li><strong><a href="http://www.nlpr.ia.ac.cn/cip/introduction.htm" target="_blank" rel="noopener">中科院：自然语言处理（2019）</a></strong> <em><a href="https://space.bilibili.com/303667813" target="_blank" rel="noopener">bilibili</a></em></li>
+<li><strong><a href="https://www.cs.ox.ac.uk/teaching/courses/2016-2017/dl/" target="_blank" rel="noopener">Oxford &amp; DeepMind : Deep Learning for Natural Language Processing ( 2017 )</a></strong> <em><a href="https://www.youtube.com/playlist?list=PL613dYIGMXoZBtZhbyiBqb0QtgK6oJbpm" target="_blank" rel="noopener">YouTube</a></em> <em><a href="https://study.163.com/course/introduction.htm?courseId=1004336028" target="_blank" rel="noopener">网易云课堂</a></em> <em><a href="https://github.com/oxford-cs-deepnlp-2017" target="_blank" rel="noopener">Github</a></em></li>
+<li><strong><a href="https://www.coursera.org/learn/nlp" target="_blank" rel="noopener">Natural Language Processing , Stanford University via Coursera</a></strong> <em><a href="https://www.classcentral.com/course/coursera-natural-language-processing-836" target="_blank" rel="noopener">Overview</a></em> <em><a href="https://www.youtube.com/playlist?list=PLQiyVNMpDLKnZYBTUOlSI9mi9wAErFtFm" target="_blank" rel="noopener">YouTube</a></em> <em><a href="https://web.stanford.edu/~jurafsky/NLPCourseraSlides.html" target="_blank" rel="noopener">Lecture</a></em></li>
+<li><strong><a href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1174/" target="_blank" rel="noopener">Stanford CS224n : Natural Language Processing with Deep Learning ( Winter 2017 )</a></strong> _<a href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6" target="_blank" rel="noopener">YouTube</a>_ <em><a href="https://www.bilibili.com/video/av41393758" target="_blank" rel="noopener">bilibili</a></em> <em><a href="http://www.mooc.ai/course/494" target="_blank" rel="noopener">AI研习社</a></em></li>
+<li><strong><a href="[http://web.stanford.edu/class/cs224n/](http://web.stanford.edu/class/cs224n/">Stanford CS224n : Natural Language Processing with Deep Learning ( Winter 2019 )</a>)</strong>  <em><a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z" target="_blank" rel="noopener">YouTube</a></em> </li>
+<li><strong><a href="[http://www.phontron.com/class/nn4nlp2019/](http://www.phontron.com/class/nn4nlp2019/">CMU CS 11-747 Neural Networks for NLP ( Spring 2019 )</a>)</strong> <em><a href="https://www.youtube.com/playlist?list=PL8PYTP1V4I8Ajj7sY6sdtmjgkt7eo2VMs" target="_blank" rel="noopener">YouTube</a></em> <em><a href="https://www.bilibili.com/video/av45971299" target="_blank" rel="noopener">bilibili</a></em> <em><a href="http://www.mooc.ai/course/638" target="_blank" rel="noopener">AI研习社</a></em></li>
+</ul>
+<h2 id="优秀开源项目"><a href="#优秀开源项目" class="headerlink" title="优秀开源项目"></a>优秀开源项目</h2><ul>
+<li><a href="https://github.com/sebastianruder/NLP-progress" target="_blank" rel="noopener"><strong>sebastianruder / NLP-progress</strong> : Repository to track the progress in Natural Language Processing (NLP), including the datasets and the current state-of-the-art for the most common NLP tasks. </a></li>
+<li><a href="https://github.com/crownpku/awesome-chinese-nlp" target="_blank" rel="noopener"><strong>crownpku / Awesome-Chinese-NLP</strong> : A curated list of resources for Chinese NLP / 中文自然语言处理相关资料</a></li>
+<li><a href="https://github.com/yandexdataschool/nlp_course" target="_blank" rel="noopener"><strong>yandexdataschool / nlp_course</strong> : YSDA course in Natural Language Processing</a></li>
+<li><a href="https://github.com/jacobeisenstein/gt-nlp-class" target="_blank" rel="noopener"><strong>jacobeisenstein / gt-nlp-class</strong> : Course materials for Georgia Tech CS 4650 and 7650, Natural Language Processing</a></li>
+<li><a href="https://github.com/brightmart/nlp_chinese_corpus" target="_blank" rel="noopener"><strong>brightmart / nlp_chinese_corpus</strong> : Large Scale Chinese Corpus for NLP / 大规模中文自然语言处理语料</a></li>
+<li><a href="https://github.com/graykode/nlp-tutorial" target="_blank" rel="noopener"><strong>graykode / nlp-tutorial</strong> : Natural Language Processing Tutorial for Deep Learning Researchers</a></li>
+<li><a href="https://github.com/JustFollowUs/Natural-Language-Processing" target="_blank" rel="noopener"><strong>JustFollowUs / Natural-Language-Processing</strong> : 一份自然语言处理学习资料合集</a></li>
+<li><a href="https://github.com/mhagiwara/100-nlp-papers" target="_blank" rel="noopener"><strong>mhagiwara / 100-nlp-papers</strong> : This is a list of 100 important natural language processing (NLP) papers that serious students and researchers working in the field should probably know about and read. </a></li>
+<li><a href="https://github.com/duoergun0729/nlp" target="_blank" rel="noopener"><strong>duoergun0729 / nlp</strong> : 兜哥出品 &lt;一本开源的NLP入门书籍&gt;</a></li>
+<li><a href="https://github.com/zibuyu/research_tao" target="_blank" rel="noopener"><strong>zibuyu / research_tao</strong> : 清华大学刘知远教授开源书籍《NLP研究入门之道》，系统地介绍了如何入门NLP科研</a></li>
+<li><a href="https://github.com/SophonPlus/ChineseNlpCorpus" target="_blank" rel="noopener"><strong>SophonPlus / ChineseNlpCorpus</strong> : 搜集、整理、发布中文自然语言处理语料/数据集</a></li>
+<li><a href="https://github.com/neubig/nlptutorial" target="_blank" rel="noopener"><strong>neubig / nlptutorial</strong> : A Tutorial about Programming for Natural Language Processing</a></li>
+<li><a href="https://github.com/lpty/nlp_base" target="_blank" rel="noopener"><strong>lpty / nlp_base</strong> : 一些关于自然语言的基本模型，这个项目里面是作者调研时写的一些简单demo。</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/07/1557242890/" rel="next" title="达观杯文本智能处理挑战赛——简介篇">
+                <i class="fa fa-chevron-left"></i> 达观杯文本智能处理挑战赛——简介篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="machine-learning">
+            
+              <p class="site-author-name" itemprop="name">machine-learning</p>
+              <div class="site-description motion-element" itemprop="description">Computers are able to see, hear and learn. Welcome to the future</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/machines-learning" title="GitHub &rarr; https://github.com/machines-learning" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:machine-learning@qq.com" title="E-Mail &rarr; mailto:machine-learning@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何入门"><span class="nav-number">1.</span> <span class="nav-text">如何入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书籍推荐"><span class="nav-number">2.</span> <span class="nav-text">书籍推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频教程"><span class="nav-number">3.</span> <span class="nav-text">视频教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优秀开源项目"><span class="nav-number">4.</span> <span class="nav-text">优秀开源项目</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">machine-learning</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://machine-learning.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://artificial-intelligence.net.cn/2019/05/08/1557328260/";
+    this.page.identifier = "2019/05/08/1557328260/";
+    this.page.title = 'NLP学习之路——资料搜集篇';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://machine-learning.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz',
+                'X-LC-Key': 'GDo2dy3UKTJkiL6Oqq6c009Y',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
