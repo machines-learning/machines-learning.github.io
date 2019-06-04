@@ -139,7 +139,7 @@
 <meta property="og:image" content="https://artificial-intelligence.net.cn/2019/06/04/1559642400/a163b2f7.png">
 <meta property="og:image" content="https://artificial-intelligence.net.cn/2019/06/04/1559642400/bf5c7507.png">
 <meta property="og:image" content="https://artificial-intelligence.net.cn/2019/06/04/1559642400/7f78e18f.png">
-<meta property="og:updated_time" content="2019-06-04T12:10:45.110Z">
+<meta property="og:updated_time" content="2019-06-04T12:27:30.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch 深度学习：60分钟速成">
 <meta name="twitter:description" content="本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：  Pytorch深度学习：60分钟速成 数据加载与处理 迁移学习 使用混合前端部署Seq2Seq模型 保存与加载模型 torch.nn是什么">
@@ -492,7 +492,7 @@
                 
               
 
-              <time title="Created: 2019-06-04 18:00:00 / Modified: 20:10:45" itemprop="dateCreated datePublished" datetime="2019-06-04T18:00:00+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 18:00:00 / Modified: 20:27:30" itemprop="dateCreated datePublished" datetime="2019-06-04T18:00:00+08:00">2019-06-04</time>
             
 
             
@@ -593,27 +593,27 @@
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h5 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h5><p>Tensors与NumPy中的ndarrays类似，另外Tensors还可以使用 GPU 加速计算。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 <h6 id="构造一个未初始化的5x3的矩阵："><a href="#构造一个未初始化的5x3的矩阵：" class="headerlink" title="构造一个未初始化的5x3的矩阵："></a>构造一个未初始化的5x3的矩阵：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/61584c35.png" title="61584c35.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/61584c35.png" title="61584c35.png"></p>
 <p>使用NumPy构造一个未初始化的5x3的矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/624451cc.png" title="624451cc.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/624451cc.png" title="624451cc.png"></p>
 <h6 id="构造一个随机初始化的矩阵："><a href="#构造一个随机初始化的矩阵：" class="headerlink" title="构造一个随机初始化的矩阵："></a>构造一个随机初始化的矩阵：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/8e67cc1f.png" title="8e67cc1f.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/8e67cc1f.png" title="8e67cc1f.png"></p>
 <p>使用Numpy构造一个随机初始化的矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/f2f5f7b6.png" title="f2f5f7b6.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/f2f5f7b6.png" title="f2f5f7b6.png"></p>
 <h6 id="构造一个用0填充的矩阵，数据类型为long-："><a href="#构造一个用0填充的矩阵，数据类型为long-：" class="headerlink" title="构造一个用0填充的矩阵，数据类型为long ："></a>构造一个用0填充的矩阵，数据类型为long ：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/a89ee470.png" title="a89ee470.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/a89ee470.png" title="a89ee470.png"></p>
 <p>用Numpy构造一个用0填充的矩阵，数据类型为long ：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype=np.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/84d4e2f5.png" title="84d4e2f5.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/84d4e2f5.png" title="84d4e2f5.png"></p>
 <h6 id="构造一个用已有数据初始化的tensor："><a href="#构造一个用已有数据初始化的tensor：" class="headerlink" title="构造一个用已有数据初始化的tensor："></a>构造一个用已有数据初始化的tensor：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/db7a767b.png" title="db7a767b.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/db7a767b.png" title="db7a767b.png"></p>
 <p>用NumPy构造一个用已有数据初始化的ndarray ：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/d2dad8b5.png" title="d2dad8b5.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/d2dad8b5.png" title="d2dad8b5.png"></p>
 <h6 id="或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值"><a href="#或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值" class="headerlink" title="或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值"></a>或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = x.new_ones(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.double)</span><br><span class="line">print(x)</span><br><span class="line">x = torch.randn_like(x, dtype=torch.float)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/83edc98f.png" title="83edc98f.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/83edc98f.png" title="83edc98f.png"></p>
 <p>查看tensor的size：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.size()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
@@ -628,29 +628,29 @@
 <li>torch.Size 实际上是一个元祖，因此它支持所有元祖操作。</li>
 </ul>
 </blockquote>
-<p>输出：<br><img src="/06/04/1559642400/deb8d58b.png" title="deb8d58b.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/deb8d58b.png" title="deb8d58b.png"></p>
 <p>使用 Numpy 基于已有的ndarray创造新的ndarray，</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = np.ones((<span class="number">5</span>, <span class="number">3</span>), dtype=np.double)</span><br><span class="line">print(x)</span><br><span class="line">x = np.random.rand(*x.shape)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/1bff7a87.png" title="1bff7a87.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/1bff7a87.png" title="1bff7a87.png"></p>
 <p>查看ndarray的shape ：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/8a7007d8.png" title="8a7007d8.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/8a7007d8.png" title="8a7007d8.png"></p>
 <h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><p>操作有多种语法，在下面的示例中，我们将研究加法操作。</p>
 <h6 id="加法：语法1"><a href="#加法：语法1" class="headerlink" title="加法：语法1"></a>加法：语法1</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/7d036c4b.png" title="7d036c4b.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/7d036c4b.png" title="7d036c4b.png"></p>
 <p>Numpy 中的加法：语法1</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/c6ccba98.png" title="c6ccba98.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/c6ccba98.png" title="c6ccba98.png"></p>
 <h6 id="加法：语法2"><a href="#加法：语法2" class="headerlink" title="加法：语法2"></a>加法：语法2</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(torch.add(x, y))</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/777b8966.png" title="777b8966.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/777b8966.png" title="777b8966.png"></p>
 <p>NumPy中的加法：语法2</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(np.add(x, y))</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/1d972dea.png" title="1d972dea.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/1d972dea.png" title="1d972dea.png"></p>
 <h6 id="加法：提供一个输出tensor作为参数"><a href="#加法：提供一个输出tensor作为参数" class="headerlink" title="加法：提供一个输出tensor作为参数"></a>加法：提供一个输出tensor作为参数</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(result)</span><br><span class="line">torch.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/6f84d7d0.png" title="6f84d7d0.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/6f84d7d0.png" title="6f84d7d0.png"></p>
 <p>NumPy 加法：提供一个输出ndarray作为参数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">print(result)</span><br><span class="line">np.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/36cb2728.png" title="36cb2728.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/36cb2728.png" title="36cb2728.png"></p>
 <h6 id="加法：in-place（就地，在原来的位置改变）"><a href="#加法：in-place（就地，在原来的位置改变）" class="headerlink" title="加法：in-place（就地，在原来的位置改变）"></a>加法：in-place（就地，在原来的位置改变）</h6><blockquote>
 <p><strong>注意</strong>：</p>
 <ul>
@@ -659,33 +659,33 @@
 </ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br><span class="line">y.add_(x)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/beff2a6f.png" title="beff2a6f.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/beff2a6f.png" title="beff2a6f.png"></p>
 <h6 id="您可以使用类似NumPy索引与切片的标准操作"><a href="#您可以使用类似NumPy索引与切片的标准操作" class="headerlink" title="您可以使用类似NumPy索引与切片的标准操作"></a>您可以使用类似NumPy索引与切片的标准操作</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/7d6ccc61.png" title="7d6ccc61.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/7d6ccc61.png" title="7d6ccc61.png"></p>
 <p>NumPy中的索引与切片操作</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/b0eaf859.png" title="b0eaf859.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/b0eaf859.png" title="b0eaf859.png"></p>
 <h6 id="调整大小：如果您想要调整大小-改变形状，你可以使用-torch-view："><a href="#调整大小：如果您想要调整大小-改变形状，你可以使用-torch-view：" class="headerlink" title="调整大小：如果您想要调整大小/改变形状，你可以使用 torch.view："></a>调整大小：如果您想要调整大小/改变形状，你可以使用 torch.view：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.view(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.shape(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.shape(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>注意</strong>：</p>
 </blockquote>
-<p>输出：<br><img src="/06/04/1559642400/ff705f81.png" title="ff705f81.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/ff705f81.png" title="ff705f81.png"></p>
 <h6 id="如果你的tensor只有一个元素，使用-item-得到一个Python-Number"><a href="#如果你的tensor只有一个元素，使用-item-得到一个Python-Number" class="headerlink" title="如果你的tensor只有一个元素，使用.item()得到一个Python Number"></a>如果你的tensor只有一个元素，使用.item()得到一个Python Number</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure>
-<p>回答：<br><img src="/06/04/1559642400/21e8df91.png" title="21e8df91.png"></p>
+<p>回答：<br><img src="/2019/06/04/1559642400/21e8df91.png" title="21e8df91.png"></p>
 <p>NumPy .item() 示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure>
-<p>回答：<br><img src="/06/04/1559642400/38e46887.png" title="38e46887.png"></p>
+<p>回答：<br><img src="/2019/06/04/1559642400/38e46887.png" title="38e46887.png"></p>
 <h6 id="稍后阅读"><a href="#稍后阅读" class="headerlink" title="稍后阅读:"></a><strong>稍后阅读</strong>:</h6><p><a href="https://pytorch.org/docs/torch" target="_blank" rel="noopener">这里</a>有100多个Tensor操作，包括置换, 索引, 切片, 数学运算, 线性代数, 随机数等等。</p>
 <h3 id="NumPy-桥"><a href="#NumPy-桥" class="headerlink" title="NumPy 桥"></a>NumPy 桥</h3><p>将Torch张量转换为NumPy数组是一件轻而易举的事情，反之亦然。<br>Torch张量和NumPy数组将共享它们的底层内存位置(如果Torch张量位于CPU上)，更改其中一个将会改变另一个。</p>
 <h5 id="将Torch张量转换为NumPy数组"><a href="#将Torch张量转换为NumPy数组" class="headerlink" title="将Torch张量转换为NumPy数组"></a>将Torch张量转换为NumPy数组</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/4037d43b.png" title="4037d43b.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/4037d43b.png" title="4037d43b.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/b7f7314c.png" title="b7f7314c.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/b7f7314c.png" title="b7f7314c.png"></p>
 <h6 id="查看NumPy数组的值是如何变化的："><a href="#查看NumPy数组的值是如何变化的：" class="headerlink" title="查看NumPy数组的值是如何变化的："></a>查看NumPy数组的值是如何变化的：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/7001b1a8.png" title="7001b1a8.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/7001b1a8.png" title="7001b1a8.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/4b42b954.png" title="4b42b954.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/4b42b954.png" title="4b42b954.png"></p>
 <blockquote>
 <p><strong>注意</strong>：</p>
 <ul>
@@ -694,22 +694,22 @@
 </ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>, device=<span class="string">'cuda'</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/3000f0cd.png" title="3000f0cd.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/3000f0cd.png" title="3000f0cd.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/28a69493.png" title="28a69493.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/28a69493.png" title="28a69493.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.cpu().numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/5884b5e9.png" title="5884b5e9.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/5884b5e9.png" title="5884b5e9.png"></p>
 <h6 id="查看NumPy数组的值是如何变化的：-1"><a href="#查看NumPy数组的值是如何变化的：-1" class="headerlink" title="查看NumPy数组的值是如何变化的："></a>查看NumPy数组的值是如何变化的：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/c717c186.png" title="c717c186.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/c717c186.png" title="c717c186.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/de0e4923.png" title="de0e4923.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/de0e4923.png" title="de0e4923.png"></p>
 <h5 id="将NumPy数组转换为Torch张量"><a href="#将NumPy数组转换为Torch张量" class="headerlink" title="将NumPy数组转换为Torch张量"></a>将NumPy数组转换为Torch张量</h5><h6 id="查看如何改变NumPy数组自动改变Torch张量："><a href="#查看如何改变NumPy数组自动改变Torch张量：" class="headerlink" title="查看如何改变NumPy数组自动改变Torch张量："></a>查看如何改变NumPy数组自动改变Torch张量：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/a163b2f7.png" title="a163b2f7.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/a163b2f7.png" title="a163b2f7.png"></p>
 <h6 id="查看改变NumPy数组，是否会改变位于GPU上的Torch张量："><a href="#查看改变NumPy数组，是否会改变位于GPU上的Torch张量：" class="headerlink" title="查看改变NumPy数组，是否会改变位于GPU上的Torch张量："></a>查看改变NumPy数组，是否会改变位于GPU上的Torch张量：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a).cuda()</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/bf5c7507.png" title="bf5c7507.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/bf5c7507.png" title="bf5c7507.png"></p>
 <h3 id="CUDA-张量"><a href="#CUDA-张量" class="headerlink" title="CUDA 张量"></a>CUDA 张量</h3><p>张量可以使用.to方法移动到任何设备上。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># let us run this cell only if CUDA is available</span></span><br><span class="line"><span class="comment"># We will use ``torch.device`` objects to move tensors in and out of GPU</span></span><br><span class="line">x = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)          <span class="comment"># a CUDA device object</span></span><br><span class="line">    y = torch.ones_like(x, device=device)  <span class="comment"># directly create a tensor on GPU</span></span><br><span class="line">    x = x.to(device)                       <span class="comment"># or just use strings ``.to("cuda")``</span></span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))       <span class="comment"># ``.to`` can also change dtype together!</span></span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/06/04/1559642400/7f78e18f.png" title="7f78e18f.png"></p>
+<p>输出：<br><img src="/2019/06/04/1559642400/7f78e18f.png" title="7f78e18f.png"></p>
 <p><a name="index2"></a></p>
 <h2 id="Autograd：自动求导"><a href="#Autograd：自动求导" class="headerlink" title="Autograd：自动求导"></a>Autograd：自动求导</h2><p><a name="index3"></a></p>
 <h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p><a name="index4"></a></p>
