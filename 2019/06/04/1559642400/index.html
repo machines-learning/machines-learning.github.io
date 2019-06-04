@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：  Pytorch深度学习：60分钟速成 数据加载与处理 迁移学习 使用混合前端部署Seq2Seq模型 保存与加载模型 torch.nn是什么  教学目标 高层次地理解Pytorch的Tensor库和神经网络 训练一个小的神经网络对图像进行分类   本教程假设您对 NumPy 已经有了基本的了解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch 深度学习：60分钟速成">
+<meta property="og:url" content="https://artificial-intelligence.net.cn/2019/06/04/1559642400/index.html">
+<meta property="og:site_name" content="Machine Learning">
+<meta property="og:description" content="本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：  Pytorch深度学习：60分钟速成 数据加载与处理 迁移学习 使用混合前端部署Seq2Seq模型 保存与加载模型 torch.nn是什么  教学目标 高层次地理解Pytorch的Tensor库和神经网络 训练一个小的神经网络对图像进行分类   本教程假设您对 NumPy 已经有了基本的了解">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//61584c35.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//624451cc.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//8e67cc1f.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//f2f5f7b6.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//a89ee470.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//84d4e2f5.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//db7a767b.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//d2dad8b5.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//83edc98f.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//deb8d58b.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//1bff7a87.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//8a7007d8.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//7d036c4b.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//c6ccba98.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//777b8966.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//1d972dea.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//6f84d7d0.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//36cb2728.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//beff2a6f.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//7d6ccc61.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//b0eaf859.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//ff705f81.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//21e8df91.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//38e46887.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//4037d43b.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//b7f7314c.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//7001b1a8.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//4b42b954.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//3000f0cd.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//28a69493.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//5884b5e9.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//c717c186.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//de0e4923.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//a163b2f7.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//bf5c7507.png">
+<meta property="og:image" content="https://artificial-intelligence.net.cn/.cn//7f78e18f.png">
+<meta property="og:updated_time" content="2019-06-04T10:13:25.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pytorch 深度学习：60分钟速成">
+<meta name="twitter:description" content="本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：  Pytorch深度学习：60分钟速成 数据加载与处理 迁移学习 使用混合前端部署Seq2Seq模型 保存与加载模型 torch.nn是什么  教学目标 高层次地理解Pytorch的Tensor库和神经网络 训练一个小的神经网络对图像进行分类   本教程假设您对 NumPy 已经有了基本的了解">
+<meta name="twitter:image" content="https://artificial-intelligence.net.cn/.cn//61584c35.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Machine Learning" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://artificial-intelligence.net.cn/2019/06/04/1559642400/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Pytorch 深度学习：60分钟速成 | Machine Learning</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Machine Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">machine-learning's blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+<script type="text/javascript">
+  var headband=document.getElementsByClassName("headband")[0];
+  var githubContainer=document.createElement("div");
+  githubContainer.innerHTML="" +
+    "<a href='https://github.com/machines-learning' " +
+    "   class=\"github-corner\" " +
+    "   aria-label=\"View source on Github\">" +
+    "   <svg width=\"80\" " +
+    "        height=\"80\" " +
+    "        viewBox=\"0 0 250 250\" " +
+    "        style=\"fill:#151513; " +
+    "        color:#fff; " +
+    "        position: absolute; " +
+    "        top: 0; " +
+    "        border: 0; " +
+    "        left: 0; " +
+    "        transform: " +
+    "        scale(-1, 1);\" " +
+    "        aria-hidden=\"true\">" +
+    "        <path d=\"M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z\"></path>" +
+    "        <path d=\"M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 " +
+    "120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 " +
+    "125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2\" " +
+    "              fill=\"currentColor\" " +
+    "              style=\"transform-origin: 130px 106px;\" " +
+    "              class=\"octo-arm\">" +
+    "        </path>" +
+    "        <path d=\"M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 " +
+    "C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 " +
+    "154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 " +
+    "178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 " +
+    "C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 " +
+    "203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 " +
+    "152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z\" " +
+    "             fill=\"currentColor\" " +
+    "             class=\"octo-body\">" +
+    "         </path>" +
+    "   </svg>" +
+    "   <style>" +
+    "         .github-corner:hover " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}" +
+    "         @keyframes " +
+    "         octocat-wave{0%,100%{transform:rotate(0)}20%," +
+    "60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}" +
+    "         @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner " +
+    "         .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>" +
+    "</a>";
+  headband.appendChild(githubContainer);
+</script>
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://artificial-intelligence.net.cn/2019/06/04/1559642400/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="machine-learning">
+      <meta itemprop="description" content="Computers are able to see, hear and learn. Welcome to the future">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Machine Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pytorch 深度学习：60分钟速成
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-04 18:00:00 / Modified: 18:13:25" itemprop="dateCreated datePublished" datetime="2019-06-04T18:00:00+08:00">2019-06-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/04/1559642400/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/04/1559642400/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/04/1559642400/" class="leancloud_visitors" data-flag-title="Pytorch 深度学习：60分钟速成">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：</p>
+<ul>
+<li>Pytorch深度学习：60分钟速成</li>
+<li>数据加载与处理</li>
+<li>迁移学习</li>
+<li>使用混合前端部署Seq2Seq模型</li>
+<li>保存与加载模型</li>
+<li>torch.nn是什么</li>
+</ul>
+<h2 id="教学目标"><a href="#教学目标" class="headerlink" title="教学目标"></a>教学目标</h2><ul>
+<li>高层次地理解Pytorch的Tensor库和神经网络</li>
+<li>训练一个小的神经网络对图像进行分类</li>
+</ul>
+<blockquote>
+<p>本教程假设您对 <a href="http://www.numpy.org" target="_blank" rel="noopener">NumPy</a> 已经有了基本的了解，请确保您已经安装了 <a href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener">torch</a> 和 <a href="https://github.com/pytorch/vision" target="_blank" rel="noopener">torchvision</a> ，没有安装请前往 <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">安装向导页面</a> 进行安装，也可以点击 <a href="https://drive.google.com/open?id=1ZBnuiwwkmKLQ6Xkb9mIOHXOeuAaRwUGj" target="_blank" rel="noopener">Pytorch 深度学习：60分钟速成</a> 前往Google Colab阅读教程并运行代码<br><strong>注意</strong>：本教程在原有教程的基础上增加了 Numpy 的对照代码，增加了部分补充说明与代码</p>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#index1">一、什么是Pytorch ？</a><ul>
+<li><a href="#index11">1 开始</a></li>
+<li><a href="#index12">2 Numpy桥</a></li>
+<li><a href="#index13">3 CUDA张量</a></li>
+</ul>
+</li>
+<li><a href="#index2">二、Autograd：自动求导</a></li>
+<li><a href="#index3">三、神经网络</a></li>
+<li><a href="#index4">四、训练一个分类器</a></li>
+<li><a href="#index5">五、读：数据并行</a></li>
+</ul>
+<p><a name="index1"></a></p>
+<h2 id="一、什么是Pytorch-？"><a href="#一、什么是Pytorch-？" class="headerlink" title="一、什么是Pytorch ？"></a>一、什么是Pytorch ？</h2><p>Pytorch是基于Python的科学计算包</p>
+<ul>
+<li>NumPy的替代品，可以使用GPU的强大功能</li>
+<li>深度学习研究平台，提供最大的灵活性和速度<br><a name="index11"></a></li>
+</ul>
+<h3 id="1-开始"><a href="#1-开始" class="headerlink" title="1 开始"></a>1 开始</h3><p><strong>1.1 张量</strong></p>
+<p>Tensors与NumPy中的ndarrays类似，另外Tensors还可以使用 GPU 加速计算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<p>1.1.1 构造一个未初始化的5x3的矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//61584c35.png" alt="61584c35.png"></p>
+<p>使用NumPy构造一个未初始化的5x3的矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//624451cc.png" alt="624451cc.png"></p>
+<p>1.1.2 构造一个随机初始化的矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//8e67cc1f.png" alt="8e67cc1f.png"></p>
+<p>使用Numpy构造一个随机初始化的矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//f2f5f7b6.png" alt="f2f5f7b6.png"></p>
+<p>1.1.3 构造一个用0填充的矩阵，数据类型为long ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//a89ee470.png" alt="a89ee470.png"></p>
+<p>用Numpy构造一个用0填充的矩阵，数据类型为long ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype=np.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//84d4e2f5.png" alt="84d4e2f5.png"></p>
+<p>1.1.4 构造一个用已有数据初始化的tensor：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//db7a767b.png" alt="db7a767b.png"></p>
+<p>用NumPy构造一个用已有数据初始化的ndarray ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//d2dad8b5.png" alt="d2dad8b5.png"></p>
+<p>1.1.5 或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = x.new_ones(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.double)</span><br><span class="line">print(x)</span><br><span class="line">x = torch.randn_like(x, dtype=torch.float)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//83edc98f.png" alt="83edc98f.png"></p>
+<p>查看tensor的size：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.size()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>官方教程并没有列出第二种写法，但是第二种写法确实存在并且能够正常运行。.shape 是 .size() 的别名，两种写法输出相同。具体可以看这两个issue：<ul>
+<li><a href="https://github.com/pytorch/pytorch/issues/5544" target="_blank" rel="noopener">.size() vs .shape, which one should be used? · Issue #5544 · pytorch/pytorch · GitHub</a></li>
+<li><a href="https://github.com/pytorch/pytorch/pull/1983" target="_blank" rel="noopener">add shape alias by hughperkins · Pull Request #1983 · pytorch/pytorch · GitHub</a></li>
+</ul>
+</li>
+<li>torch.Size 实际上是一个元祖，因此它支持所有元祖操作。</li>
+</ul>
+</blockquote>
+<p>输出：<br><img src="/.cn//deb8d58b.png" alt="deb8d58b.png"></p>
+<p>使用 Numpy 基于已有的ndarray创造新的ndarray，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = np.ones((<span class="number">5</span>, <span class="number">3</span>), dtype=np.double)</span><br><span class="line">print(x)</span><br><span class="line">x = np.random.rand(*x.shape)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//1bff7a87.png" alt="1bff7a87.png"></p>
+<p>查看ndarray的shape ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//8a7007d8.png" alt="8a7007d8.png"></p>
+<p><strong>1.2 操作</strong><br>操作有多种语法，在下面的示例中，我们将研究加法操作。</p>
+<p>1.2.1 加法：语法1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//7d036c4b.png" alt="7d036c4b.png"></p>
+<p>Numpy 中的加法：语法1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//c6ccba98.png" alt="c6ccba98.png"></p>
+<p>1.2.2 加法：语法2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(torch.add(x, y))</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//777b8966.png" alt="777b8966.png"></p>
+<p>NumPy中的加法：语法2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(np.add(x, y))</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//1d972dea.png" alt="1d972dea.png"></p>
+<p>1.2.3 加法：提供一个输出tensor作为参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(result)</span><br><span class="line">torch.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//6f84d7d0.png" alt="6f84d7d0.png"></p>
+<p>NumPy 加法：提供一个输出ndarray作为参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">print(result)</span><br><span class="line">np.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//36cb2728.png" alt="36cb2728.png"></p>
+<p>1.2.4 加法：in-place（就地，在原来的位置改变）</p>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>任何以“_”结尾的操作都会进行in-place操作，即在原来的tensor上操作并改变</li>
+<li>通过打印id可以看出，in-place是在原来的tensor上进行操作并改变，并不是生成一个新的tensor然后赋值给原有的变量</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br><span class="line">y.add_(x)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//beff2a6f.png" alt="beff2a6f.png"></p>
+<p>1.2.5 您可以使用类似NumPy索引与切片的标准操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//7d6ccc61.png" alt="7d6ccc61.png"></p>
+<p>NumPy中的索引与切片操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//b0eaf859.png" alt="b0eaf859.png"></p>
+<p>1.2.6 调整大小：如果您想要调整大小/改变形状，你可以使用 torch.view：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.view(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.shape(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.shape(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>：</p>
+</blockquote>
+<p>输出：<br><img src="/.cn//ff705f81.png" alt="ff705f81.png"></p>
+<p>1.2.7 如果你的tensor只有一个元素，使用.item()得到一个Python Number</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure>
+<p>回答：<br><img src="/.cn//21e8df91.png" alt="21e8df91.png"></p>
+<p>NumPy .item() 示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure>
+<p>回答：<br><img src="/.cn//38e46887.png" alt="38e46887.png"></p>
+<p>1.2.8 <strong>稍后阅读</strong>:</p>
+<p><a href="https://pytorch.org/docs/torch" target="_blank" rel="noopener">这里</a>有100多个Tensor操作，包括置换, 索引, 切片, 数学运算, 线性代数, 随机数等等。</p>
+<h3 id="2-NumPy-桥"><a href="#2-NumPy-桥" class="headerlink" title="2 NumPy 桥"></a>2 NumPy 桥</h3><p>将Torch张量转换为NumPy数组是一件轻而易举的事情，反之亦然。<br>Torch张量和NumPy数组将共享它们的底层内存位置(如果Torch张量位于CPU上)，更改其中一个将会改变另一个。</p>
+<p><strong>2.1 将Torch张量转换为NumPy数组</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//4037d43b.png" alt="4037d43b.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//b7f7314c.png" alt="b7f7314c.png"></p>
+<p>2.1.1 查看NumPy数组的值是如何变化的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//7001b1a8.png" alt="7001b1a8.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//4b42b954.png" alt="4b42b954.png"></p>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>只有Torch张量位于CPU上时，才会与NumPy数组共享内存地址，因为NumPy数组位于CPU上</li>
+<li>如果Torch张量位于GPU上，需要先将Torch张量移到CPU上，才能获取NumPy数组</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>, device=<span class="string">'cuda'</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//3000f0cd.png" alt="3000f0cd.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//28a69493.png" alt="28a69493.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.cpu().numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//5884b5e9.png" alt="5884b5e9.png"></p>
+<p>2.1.2 查看NumPy数组的值是如何变化的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//c717c186.png" alt="c717c186.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//de0e4923.png" alt="de0e4923.png"></p>
+<p><strong>2.2 将NumPy数组转换为Torch张量</strong></p>
+<p>2.2.1 查看如何改变NumPy数组自动改变Torch张量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//a163b2f7.png" alt="a163b2f7.png"></p>
+<p>2.2.2 查看改变NumPy数组，是否会改变位于GPU上的Torch张量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a).cuda()</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//bf5c7507.png" alt="bf5c7507.png"></p>
+<h3 id="CUDA-张量"><a href="#CUDA-张量" class="headerlink" title="CUDA 张量"></a>CUDA 张量</h3><p>张量可以使用.to方法移动到任何设备上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># let us run this cell only if CUDA is available</span></span><br><span class="line"><span class="comment"># We will use ``torch.device`` objects to move tensors in and out of GPU</span></span><br><span class="line">x = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)          <span class="comment"># a CUDA device object</span></span><br><span class="line">    y = torch.ones_like(x, device=device)  <span class="comment"># directly create a tensor on GPU</span></span><br><span class="line">    x = x.to(device)                       <span class="comment"># or just use strings ``.to("cuda")``</span></span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))       <span class="comment"># ``.to`` can also change dtype together!</span></span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="/.cn//7f78e18f.png" alt="7f78e18f.png"></p>
+<p><a name="index2"></a></p>
+<h2 id="Autograd：自动求导"><a href="#Autograd：自动求导" class="headerlink" title="Autograd：自动求导"></a>Autograd：自动求导</h2><p><a name="index3"></a></p>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p><a name="index4"></a></p>
+<h2 id="训练一个分类器"><a href="#训练一个分类器" class="headerlink" title="训练一个分类器"></a>训练一个分类器</h2><p><a name="index5"></a></p>
+<h2 id="选读：数据并行"><a href="#选读：数据并行" class="headerlink" title="选读：数据并行"></a>选读：数据并行</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/08/1557328260/" rel="next" title="NLP学习之路——资料搜集篇">
+                <i class="fa fa-chevron-left"></i> NLP学习之路——资料搜集篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/未命名/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="machine-learning">
+            
+              <p class="site-author-name" itemprop="name">machine-learning</p>
+              <div class="site-description motion-element" itemprop="description">Computers are able to see, hear and learn. Welcome to the future</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/machines-learning" title="GitHub &rarr; https://github.com/machines-learning" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:machine-learning@qq.com" title="E-Mail &rarr; mailto:machine-learning@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教学目标"><span class="nav-number">1.</span> <span class="nav-text">教学目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是Pytorch-？"><span class="nav-number">3.</span> <span class="nav-text">一、什么是Pytorch ？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-开始"><span class="nav-number">3.1.</span> <span class="nav-text">1 开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-NumPy-桥"><span class="nav-number">3.2.</span> <span class="nav-text">2 NumPy 桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CUDA-张量"><span class="nav-number">3.3.</span> <span class="nav-text">CUDA 张量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autograd：自动求导"><span class="nav-number">4.</span> <span class="nav-text">Autograd：自动求导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络"><span class="nav-number">5.</span> <span class="nav-text">神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练一个分类器"><span class="nav-number">6.</span> <span class="nav-text">训练一个分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选读：数据并行"><span class="nav-number">7.</span> <span class="nav-text">选读：数据并行</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">machine-learning</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://machine-learning.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://artificial-intelligence.net.cn/2019/06/04/1559642400/";
+    this.page.identifier = "2019/06/04/1559642400/";
+    this.page.title = 'Pytorch 深度学习：60分钟速成';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://machine-learning.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '4MkhJfDS1HKNXXak66r0L0GT-gzGzoHsz',
+                'X-LC-Key': 'GDo2dy3UKTJkiL6Oqq6c009Y',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
