@@ -412,317 +412,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://artificial-intelligence.net.cn/2019/06/04/未命名/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="machine-learning">
-      <meta itemprop="description" content="Computers are able to see, hear and learn. Welcome to the future">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Machine Learning">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/04/未命名/" class="post-title-link" itemprop="url">Untitled</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-04 18:01:40" itemprop="dateCreated datePublished" datetime="2019-06-04T18:01:40+08:00">2019-06-04</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/04/未命名/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/04/未命名/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/06/04/未命名/" class="leancloud_visitors" data-flag-title>
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Pytorch-深度学习：60分钟速成"><a href="#Pytorch-深度学习：60分钟速成" class="headerlink" title="Pytorch 深度学习：60分钟速成"></a>Pytorch 深度学习：60分钟速成</h1><p>本教程是Pytorch官方教程Getting Started篇的第一篇教程，更多教程请点击下方链接查看：</p>
-<ul>
-<li>Pytorch深度学习：60分钟速成</li>
-<li>数据加载与处理</li>
-<li>迁移学习</li>
-<li>使用混合前端部署Seq2Seq模型</li>
-<li>保存与加载模型</li>
-<li>torch.nn是什么</li>
-</ul>
-<h2 id="教学目标"><a href="#教学目标" class="headerlink" title="教学目标"></a>教学目标</h2><ul>
-<li>高层次地理解Pytorch的Tensor库和神经网络</li>
-<li>训练一个小的神经网络对图像进行分类</li>
-</ul>
-<blockquote>
-<p>本教程假设您对 <a href="http://www.numpy.org" target="_blank" rel="noopener">NumPy</a> 已经有了基本的了解，请确保您已经安装了 <a href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener">torch</a> 和 <a href="https://github.com/pytorch/vision" target="_blank" rel="noopener">torchvision</a> ，没有安装请前往 <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">安装向导页面</a> 进行安装，也可以点击 <a href="https://drive.google.com/open?id=1ZBnuiwwkmKLQ6Xkb9mIOHXOeuAaRwUGj" target="_blank" rel="noopener">Pytorch 深度学习：60分钟速成</a> 前往Google Colab阅读教程并运行代码<br><strong>注意</strong>：本教程在原有教程的基础上增加了 Numpy 的对照代码，增加了部分补充说明与代码</p>
-</blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#index1">一、什么是Pytorch ？</a><ul>
-<li><a href="#index11">1 开始</a></li>
-<li><a href="#index12">2 Numpy桥</a></li>
-<li><a href="#index13">3 CUDA张量</a></li>
-</ul>
-</li>
-<li><a href="#index2">二、Autograd：自动求导</a></li>
-<li><a href="#index3">三、神经网络</a></li>
-<li><a href="#index4">四、训练一个分类器</a></li>
-<li><a href="#index5">五、读：数据并行</a></li>
-</ul>
-<p><a name="index1"></a></p>
-<h2 id="一、什么是Pytorch-？"><a href="#一、什么是Pytorch-？" class="headerlink" title="一、什么是Pytorch ？"></a>一、什么是Pytorch ？</h2><p>Pytorch是基于Python的科学计算包</p>
-<ul>
-<li>NumPy的替代品，可以使用GPU的强大功能</li>
-<li>深度学习研究平台，提供最大的灵活性和速度<br><a name="index11"></a><h3 id="1-开始"><a href="#1-开始" class="headerlink" title="1 开始"></a>1 开始</h3></li>
-</ul>
-<p><strong>1.1 张量</strong></p>
-<p>Tensors与NumPy中的ndarrays类似，另外Tensors还可以使用 GPU 加速计算。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p>
-<p>1.1.1 构造一个未初始化的5x3的矩阵：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/61584c35.png" alt="61584c35.png"></p>
-<p>使用NumPy构造一个未初始化的5x3的矩阵：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/624451cc.png" alt="624451cc.png"></p>
-<p>1.1.2 构造一个随机初始化的矩阵：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/8e67cc1f.png" alt="8e67cc1f.png"></p>
-<p>使用Numpy构造一个随机初始化的矩阵：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/f2f5f7b6.png" alt="f2f5f7b6.png"></p>
-<p>1.1.3 构造一个用0填充的矩阵，数据类型为long ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.zeros(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/a89ee470.png" alt="a89ee470.png"></p>
-<p>用Numpy构造一个用0填充的矩阵，数据类型为long ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype=np.long)</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/84d4e2f5.png" alt="84d4e2f5.png"></p>
-<p>1.1.4 构造一个用已有数据初始化的tensor：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/db7a767b.png" alt="db7a767b.png"></p>
-<p>用NumPy构造一个用已有数据初始化的ndarray ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/d2dad8b5.png" alt="d2dad8b5.png"></p>
-<p>1.1.5 或者基于已有的tensor创建新的tensor，这些方法将重用输入的tensor的属性，例如，dtype，除非用户提供新值<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = x.new_ones(<span class="number">5</span>, <span class="number">3</span>, dtype=torch.double)</span><br><span class="line">print(x)</span><br><span class="line">x = torch.randn_like(x, dtype=torch.float)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/83edc98f.png" alt="83edc98f.png"></p>
-<p>查看tensor的size：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.size()</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意</strong>：</p>
-<ul>
-<li>官方教程并没有列出第二种写法，但是第二种写法确实存在并且能够正常运行。.shape 是 .size() 的别名，两种写法输出相同。具体可以看这两个issue：<ul>
-<li><a href="https://github.com/pytorch/pytorch/issues/5544" target="_blank" rel="noopener">.size() vs .shape, which one should be used? · Issue #5544 · pytorch/pytorch · GitHub</a></li>
-<li><a href="https://github.com/pytorch/pytorch/pull/1983" target="_blank" rel="noopener">add shape alias by hughperkins · Pull Request #1983 · pytorch/pytorch · GitHub</a></li>
-</ul>
-</li>
-<li>torch.Size 实际上是一个元祖，因此它支持所有元祖操作。</li>
-</ul>
-</blockquote>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/deb8d58b.png" alt="deb8d58b.png"></p>
-<p>使用 Numpy 基于已有的ndarray创造新的ndarray，<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line">print(x)</span><br><span class="line">x = np.ones((<span class="number">5</span>, <span class="number">3</span>), dtype=np.double)</span><br><span class="line">print(x)</span><br><span class="line">x = np.random.rand(*x.shape)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/1bff7a87.png" alt="1bff7a87.png"></p>
-<p>查看ndarray的shape ：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/8a7007d8.png" alt="8a7007d8.png"></p>
-<p><strong>1.2 操作</strong><br>操作有多种语法，在下面的示例中，我们将研究加法操作。</p>
-<p>1.2.1 加法：语法1<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/7d036c4b.png" alt="7d036c4b.png"></p>
-<p>Numpy 中的加法：语法1<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(x + y)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/c6ccba98.png" alt="c6ccba98.png"></p>
-<p>1.2.2 加法：语法2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(torch.add(x, y))</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/777b8966.png" alt="777b8966.png"></p>
-<p>NumPy中的加法：语法2<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(np.add(x, y))</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/1d972dea.png" alt="1d972dea.png"></p>
-<p>1.2.3 加法：提供一个输出tensor作为参数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = torch.empty(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(result)</span><br><span class="line">torch.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/6f84d7d0.png" alt="6f84d7d0.png"></p>
-<p>NumPy 加法：提供一个输出ndarray作为参数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">result = np.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">print(result)</span><br><span class="line">np.add(x, y, out=result)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/36cb2728.png" alt="36cb2728.png"></p>
-<p>1.2.4 加法：in-place（就地，在原来的位置改变）</p>
-<blockquote>
-<p><strong>注意</strong>：</p>
-<ul>
-<li>任何以“_”结尾的操作都会进行in-place操作，即在原来的tensor上操作并改变</li>
-<li>通过打印id可以看出，in-place是在原来的tensor上进行操作并改变，并不是生成一个新的tensor然后赋值给原有的变量</li>
-</ul>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br><span class="line">y.add_(x)</span><br><span class="line">print(y)</span><br><span class="line">print(id(y))</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/beff2a6f.png" alt="beff2a6f.png"></p>
-<p>1.2.5 您可以使用类似NumPy索引与切片的标准操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/7d6ccc61.png" alt="7d6ccc61.png"></p>
-<p>NumPy中的索引与切片操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x[:, <span class="number">1</span>])</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/b0eaf859.png" alt="b0eaf859.png"></p>
-<p>1.2.6 调整大小：如果您想要调整大小/改变形状，你可以使用 torch.view：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.view(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = x.shape(<span class="number">16</span>)</span><br><span class="line">print(y)</span><br><span class="line">z = x.shape(<span class="number">-1</span>, <span class="number">8</span>)</span><br><span class="line">print(z)</span><br><span class="line">print(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意</strong>：</p>
-</blockquote>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/ff705f81.png" alt="ff705f81.png"></p>
-<p>1.2.7 如果你的tensor只有一个元素，使用.item()得到一个Python Number<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure></p>
-<p>回答：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/21e8df91.png" alt="21e8df91.png"></p>
-<p>NumPy .item() 示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.rand(<span class="number">1</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.item())</span><br></pre></td></tr></table></figure></p>
-<p>回答：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/38e46887.png" alt="38e46887.png"></p>
-<p>1.2.8 <strong>稍后阅读</strong>:</p>
-<p><a href="https://pytorch.org/docs/torch" target="_blank" rel="noopener">这里</a>有100多个Tensor操作，包括置换, 索引, 切片, 数学运算, 线性代数, 随机数等等。</p>
-<h3 id="2-NumPy-桥"><a href="#2-NumPy-桥" class="headerlink" title="2 NumPy 桥"></a>2 NumPy 桥</h3><p>将Torch张量转换为NumPy数组是一件轻而易举的事情，反之亦然。<br>Torch张量和NumPy数组将共享它们的底层内存位置(如果Torch张量位于CPU上)，更改其中一个将会改变另一个。</p>
-<p><strong>2.1 将Torch张量转换为NumPy数组</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/4037d43b.png" alt="4037d43b.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/b7f7314c.png" alt="b7f7314c.png"></p>
-<p>2.1.1 查看NumPy数组的值是如何变化的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/7001b1a8.png" alt="7001b1a8.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/4b42b954.png" alt="4b42b954.png"></p>
-<blockquote>
-<p><strong>注意</strong>：</p>
-<ul>
-<li>只有Torch张量位于CPU上时，才会与NumPy数组共享内存地址，因为NumPy数组位于CPU上</li>
-<li>如果Torch张量位于GPU上，需要先将Torch张量移到CPU上，才能获取NumPy数组</li>
-</ul>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>, device=<span class="string">'cuda'</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/3000f0cd.png" alt="3000f0cd.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = a.numpy()</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/28a69493.png" alt="28a69493.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.cpu().numpy()</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/5884b5e9.png" alt="5884b5e9.png"></p>
-<p>2.1.2 查看NumPy数组的值是如何变化的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.add_(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/c717c186.png" alt="c717c186.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/de0e4923.png" alt="de0e4923.png"></p>
-<p><strong>2.2 将NumPy数组转换为Torch张量</strong></p>
-<p>2.2.1 查看如何改变NumPy数组自动改变Torch张量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/a163b2f7.png" alt="a163b2f7.png"></p>
-<p>2.2.2 查看改变NumPy数组，是否会改变位于GPU上的Torch张量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a).cuda()</span><br><span class="line">np.add(a, <span class="number">1</span>, out=a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/bf5c7507.png" alt="bf5c7507.png"></p>
-<h3 id="CUDA-张量"><a href="#CUDA-张量" class="headerlink" title="CUDA 张量"></a>CUDA 张量</h3><p>张量可以使用.to方法移动到任何设备上。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># let us run this cell only if CUDA is available</span></span><br><span class="line"><span class="comment"># We will use ``torch.device`` objects to move tensors in and out of GPU</span></span><br><span class="line">x = torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)          <span class="comment"># a CUDA device object</span></span><br><span class="line">    y = torch.ones_like(x, device=device)  <span class="comment"># directly create a tensor on GPU</span></span><br><span class="line">    x = x.to(device)                       <span class="comment"># or just use strings ``.to("cuda")``</span></span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))       <span class="comment"># ``.to`` can also change dtype together!</span></span><br></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="/.cn//daec99f3-a5de-4e73-8496-74460d99e30a/7f78e18f.png" alt="7f78e18f.png"></p>
-<p><a name="index2"></a></p>
-<h2 id="Autograd：自动求导"><a href="#Autograd：自动求导" class="headerlink" title="Autograd：自动求导"></a>Autograd：自动求导</h2><p><a name="index3"></a></p>
-<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p><a name="index4"></a></p>
-<h2 id="训练一个分类器"><a href="#训练一个分类器" class="headerlink" title="训练一个分类器"></a>训练一个分类器</h2><p><a name="index5"></a></p>
-<h2 id="选读：数据并行"><a href="#选读：数据并行" class="headerlink" title="选读：数据并行"></a>选读：数据并行</h2>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://artificial-intelligence.net.cn/2019/06/04/1559642400/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -768,7 +457,7 @@
                 
               
 
-              <time title="Created: 2019-06-04 18:00:00 / Modified: 18:13:25" itemprop="dateCreated datePublished" datetime="2019-06-04T18:00:00+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 18:00:00 / Modified: 18:13:36" itemprop="dateCreated datePublished" datetime="2019-06-04T18:00:00+08:00">2019-06-04</time>
             
 
             
@@ -1129,7 +818,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -1317,7 +1006,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -1505,7 +1194,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -1692,7 +1381,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -1879,7 +1568,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -2066,7 +1755,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -2251,7 +1940,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -2439,7 +2128,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-09 00:42:27" itemprop="dateModified" datetime="2019-05-09T00:42:27+08:00">2019-05-09</time>
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
               
             
           </span>
@@ -2550,13 +2239,194 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://artificial-intelligence.net.cn/2019/04/09/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="machine-learning">
+      <meta itemprop="description" content="Computers are able to see, hear and learn. Welcome to the future">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Machine Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-09 22:42:20" itemprop="dateCreated datePublished" datetime="2019-04-09T22:42:20+08:00">2019-04-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-04 18:13:36" itemprop="dateModified" datetime="2019-06-04T18:13:36+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/09/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/09/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/09/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/09/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
 
 
           </div>
@@ -2598,7 +2468,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
