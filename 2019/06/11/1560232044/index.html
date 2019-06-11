@@ -105,7 +105,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/machines-learning/image-repo/master/pytorch-doc-torch-storage/bc179ebf.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/machines-learning/image-repo/master/pytorch-doc-torch-storage/408c0d88.png">
-<meta property="og:updated_time" content="2019-06-11T06:59:53.785Z">
+<meta property="og:updated_time" content="2019-06-11T07:13:47.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyTorch 文档 &gt; torch.Storage">
 <meta name="twitter:description" content="本文在PyTorch官方文档的基础上，增加了描述性的文字与示例，对于一些文档没有写清楚的API的用法，参数的类型等进行了补充说明。最后一部分，深入源码的底层探索研究了Storage。您也可以前往 Google Colab 运行这篇文章中的代码。">
@@ -458,7 +458,7 @@
                 
               
 
-              <time title="Created: 2019-06-11 13:47:24 / Modified: 14:59:53" itemprop="dateCreated datePublished" datetime="2019-06-11T13:47:24+08:00">2019-06-11</time>
+              <time title="Created: 2019-06-11 13:47:24 / Modified: 15:13:47" itemprop="dateCreated datePublished" datetime="2019-06-11T13:47:24+08:00">2019-06-11</time>
             
 
             
@@ -844,34 +844,10 @@
 </li>
 </ul>
 <ul>
-<li><p><font color="red">STATIC</font> <b><code>from_file(filename,shared=False,size=0)</code>→ Storage</b></p>
-<ul>
-<li>如果将 <i>shared</i> 设为 True, 那么会在所有进程之间共享内存。所有的改变都会写入文件中。如果将 <i>shared</i> 设为 False，那么在内存中做的改变不会影响到文件。<i>size</i> 是存储中元素的数量。 如果将 <i>shared</i> 设为 False, 那么文件必须包含至少sizeof(Type)字节（Type是存储的字节数）。如果将 <i>shared</i> 设为 True, 如果必要的话将创建文件</li>
-<li>参数<ul>
-<li><b>filename</b>(<i><a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a></i>) – 被映射的文件的名字</li>
-<li><b>shared</b>(<i><a href="https://docs.python.org/3/library/functions.html#bool" target="_blank" rel="noopener">bool</a></i>) – 是否共享内存</li>
-<li><b>size</b>(<i><a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener">int</a></i>) – 存储中元素的数量</li>
-</ul>
-</li>
-<li><p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!touch tensor_file &amp; echo <span class="string">"1"</span> &gt; tensor_file</span><br><span class="line">!cat tensor_file</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>1</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.FloatStorage.from_file(<span class="string">'tensor_file'</span>)</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>[ torch.FloatStorage of size 0 ]</p>
-</blockquote>
-</li>
-<li><p><font color="red">注意</font></p>
-<ul>
-<li>文档中并没有写文件的格式是怎样的，扒了源码以及C层代码后依旧未发现，容我日后慢慢研究研究。。。</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><font color="red">STATIC</font> <b><code>from_file(filename,shared=False,size=0)</code>→ Storage</b><br>  - 如果将 <i>shared</i> 设为 True, 那么会在所有进程之间共享内存。所有的改变都会写入文件中。如果将 <i>shared</i> 设为 False，那么在内存中做的改变不会影响到文件。<i>size</i> 是存储中元素的数量。 如果将 <i>shared</i> 设为 False, 那么文件必须包含至少sizeof(Type)字节（Type是存储的字节数）。如果将 <i>shared</i> 设为 True, 如果必要的话将创建文件<br>  - 参数<br>      - <b>filename</b>(<i><a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener">str</a></i>) – 被映射的文件的名字<br>      - <b>shared</b>(<i><a href="https://docs.python.org/3/library/functions.html#bool" target="_blank" rel="noopener">bool</a></i>) – 是否共享内存<br>      - <b>size</b>(<i><a href="https://docs.python.org/3/library/functions.html#int" target="_blank" rel="noopener">int</a></i>) – 存储中元素的数量<br>  - 示例<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!touch tensor_file &amp; echo <span class="string">"1"</span> &gt; tensor_file</span><br><span class="line">!cat tensor_file</span><br></pre></td></tr></table></figure><br><br>  输出：<br>  &gt; 1<br><br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.FloatStorage.from_file(<span class="string">'tensor_file'</span>)</span><br></pre></td></tr></table></figure><br><br>  输出：<br>  &gt;<br>  &gt; [ torch.FloatStorage of size 0 ]<br><br>  - <font color="red">注意</font>
+
+<pre><code>- 文档中并没有写文件的格式是怎样的，扒了源码以及C层代码后依旧未发现，容我日后慢慢研究研究。。。
+</code></pre></li>
 </ul>
 <ul>
 <li><p><strong><code>int</code></strong></p>
